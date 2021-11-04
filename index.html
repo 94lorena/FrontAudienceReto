@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Reto 3 y 4</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/misFunciones.js"></script>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <title>Auditorios</title>
+   
+    </head>
+
+<body>
+
+<div class="container mt-5">
+
+    <div class="jumbotron">
+
+
+    <div style="text-align: center;">
+        <h1> Categoria</h1>
+        <div id="resultado1"></div>
+        <table class="table table-striped text-center"></table>
+        <div>
+            <thead>
+                <tr>
+            <th><input type="text" class="form-control mb-3" id="Cname" placeholder="name"><br><th>
+            <th><input type="text" class="form-control mb-3" id="Cdescription" placeholder="description"><br><th>
+        </div>
+        <button onclick="guardarInformacionCategoria()"class="btn btn-dark btn-block">Guardar Categoria</button>
+        <button onclick="traerInformacionCategoria()"class="btn btn-dark btn-block" > Consultar Categoria</button>
+        <button onclick="editarInformacionCategoria()"class="btn btn-dark btn-block">Actualizar Categoria</button>
+    </tr>
+
+</thead> 
+</table>
+        </div> 
+
+<div class="container mt-5">
+
+    <div class="jumbotron">
+
+    <div style="text-align: center;">
+    <h1> Auditorio</h1>
+    <div id="resultado2"></div>
+    <table class="table table-striped text-center"></table>
+    <div>
+        <input type="text" class="form-control mb-3" id="Aname" placeholder="name"><br>
+        <input type="text" class="form-control mb-3" id="Aowner" placeholder="owner"><br>
+        <input type="number" class="form-control mb-3" id="Acapacity" placeholder="capacity"><br>
+        <input type="text" class="form-control mb-3" id="Adescription" placeholder="description"><br>    
+    </div>
+    <button onclick="guardarInformacionAudience()"class="btn btn-dark btn-block">Guardar Auditorio</button>
+    <button onclick="traerInformacionAudience()"class="btn btn-dark btn-block" > Consultar Auditorio</button>
+    <button onclick="editarInformacionAudience()"class="btn btn-dark btn-block">Actualizar Auditorio</button>
+    </div>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>
+
+<div class="container mt-5">
+
+    <div class="jumbotron">
+
+    <div style="text-align: center;">
+    <h1> Cliente</h1>
+    <div id="resultado3"></div>
+    <table class="table table-striped text-center"></table>
+    <div>
+        <input type="text" class="form-control mb-3" id="CLemail" placeholder="email"><br>
+        <input type="text" class="form-control mb-3" id="CLpassword" placeholder="password"><br>
+        <input type="text" class="form-control mb-3" id="CLname" placeholder="name"><br>
+        <input type="number" class="form-control mb-3" id="CLage" placeholder="age"><br>  
+    </div>
+    <button onclick="guardarInformacionCliente()"class="btn btn-dark btn-block">Guardar Cliente</button>
+    <button onclick="traerInformacionCliente()"class="btn btn-dark btn-block"> Consultar Cliente</button>
+    <button onclick="editarInformacionCliente()"class="btn btn-dark btn-block">Actualizar Cliente</button>
+    </div>  
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>
+
+<div class="container mt-5">
+
+    <div class="jumbotron">
+
+    <div style="text-align: center;">
+        <h1> Mensaje</h1>
+        <div id="resultado4"></div>
+        <table class="table table-striped text-center"></table>
+        <div>
+            <input type="text" class="form-control mb-3" id="messagetext" placeholder="messagetext"><br>
+        </div>
+        <button onclick="guardarInformacionMensaje()"class="btn btn-dark btn-block">Guardar Mensaje</button>
+        <button onclick="traerInformacionMensaje()"class="btn btn-dark btn-block"> Consultar Mensaje</button>
+        <button onclick="editarInformacionMensaje()"class="btn btn-dark btn-block">Actualizar Mensaje</button>
+        </div> 
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>
+
+<div class="container mt-5">
+
+    <div class="jumbotron">    
+
+    <div style="text-align: center;">
+        <h1> Reservación</h1>
+        <div id="resultado5"></div>
+        <table class="table table-striped text-center"></table>
+        <div>
+            <label><strong>startDate</strong></label><br>
+            <input type="datetime-local" class="form-control mb-3" id="startDate"><br>
+            <label><strong>devolutionDate</strong></label><br>
+            <input type="datetime-local" class="form-control mb-3" id="devolutionDate"><br>
+        </div>
+        <button onclick="guardarInformacionReservacion()"class="btn btn-dark btn-block">Guardar Reservacion</button>
+        <button onclick="traerInformacionReservacion()"class="btn btn-dark btn-block">Consultar Reservacion</button>
+        <button onclick="editarInformacionReservacion()"class="btn btn-dark btn-block">Actualizar Reservacion</button>
+        </div> 
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>
+
+<div class="container mt-5">
+
+    <div class="jumbotron">
+
+
+    <div style="text-align: center;">
+        <h1> Reportes de Reservación</h1>
+        <table class="table table-striped text-center"></table>
+            <input type="date" class="form-control mb-3" id="startDate" placeholder="startDate">
+            <input type="date" class="form-control mb-3" id="devolutionDate" placeholder="devolutionDate">
+        <button onclick="traerInformacionReporteDate()"class="btn btn-dark btn-block"> Generar Reporte por fecha </button>
+        <div id="resultadoDate"></div>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>
+
+<div class="container mt-5">
+
+
+
+    <div style="text-align: center;">
+        <button onclick="traerInformacionReporteClientes()"class="btn btn-dark btn-block"> Generar Reporte Clientes y Cantidad de reservas por cliente </button>
+        <div id="resultadoClientes"></div>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>   
+
+ <div class="container mt-5">
+    
+    <div style="text-align: center;">
+        <div id="resultadoStatus"></div>
+        <button onclick="traerInformacionStatus()"class="btn btn-dark btn-block"> Generar Reporte Status Reservas </button>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 200, 200);
+            border-collapse: collapse;
+        }
+    </style>  
+
+</body>
+
+</html>
