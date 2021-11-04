@@ -8,31 +8,6 @@
  * endpoint api audience Oracle CLoud 
  */
 //////////////////////Reservaciones//////////////////////////////////        
-
-function traerInformacionStatus(){
-    console.log("test");
-    $.ajax({
-        url:"http://132.226.242.207:8081/api/Reservation/report-status",
-        type:"GET",
-        datatype:"JSON",
-        success:function(respuesta){
-            console.log(respuesta);
-            pintarRespuesta(respuesta);
-        }
-    });
-}
-function pintarRespuesta(respuesta){
-
-    let myTable="<table>";
-    myTable+="<tr>";
-       myTable+="<th>completadas</th>";
-        myTable+="<td>"+respuesta.completed+"</td>";
-        myTable+="<th>canceladas</th>";
-        myTable+="<td>"+respuesta.cancelled+"</td>";
-        myTable+="</tr>";
-    myTable+="</table>";
-    $("#resultadoStatus").html(myTable);
-}
 function traerInformacionReporteDate(){
 
     var fechaInicio = document.getElementById("RstarDate").value;
@@ -54,19 +29,43 @@ function traerInformacionReporteDate(){
 
         let myTable="<table>";
         myTable+="<tr>";
-          
+        
         for(i=0;i<respuesta.length;i++){
         myTable+="<th>total</th>";
             myTable+="<td>"+respuesta[i].devolutionDate+"</td>";
             myTable+="<td>"+respuesta[i].startDate+"</td>";
             myTable+="<td>"+respuesta[i].status+"</td>";
-          
-          
+        
             myTable+="</tr>";
         }
         myTable+="</table>";
         $("#resultadoDate").html(myTable);
     }
+
+function traerInformacionStatus(){
+    console.log("test");
+    $.ajax({
+        url:"http://132.226.242.207:8081/api/Reservation/report-status",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+            console.log(respuesta);
+            pintarRespuesta(respuesta);
+        }
+    });
+}
+function pintarRespuesta(respuesta){
+
+    let myTable="<table>";
+    myTable+="<tr>";
+        myTable+="<th>completadas</th>";
+        myTable+="<td>"+respuesta.completed+"</td>";
+        myTable+="<th>canceladas</th>";
+        myTable+="<td>"+respuesta.cancelled+"</td>";
+        myTable+="</tr>";
+    myTable+="</table>";
+    $("#resultadoStatus").html(myTable);
+}
 
     function traerInformacionReporteClientes(){
         $.ajax({
@@ -83,14 +82,14 @@ function traerInformacionReporteDate(){
 
         let myTable="<table>";
         myTable+="<tr>";
-          
+        
         for(i=0;i<respuesta.length;i++){
         myTable+="<th>total</th>";
             myTable+="<td>"+respuesta[i].total+"</td>";
             myTable+="<td>"+respuesta[i].client.name+"</td>";
             myTable+="<td>"+respuesta[i].client.email+"</td>";
             myTable+="<td>"+respuesta[i].client.age+"</td>";
-          
+        
             myTable+="</tr>";
         }
         myTable+="</table>";
@@ -133,7 +132,7 @@ function guardarInformacionCategoria(){
         name:$("#Cname").val(),
         description:$("#Cdescription").val()
         };
-      
+    
         $.ajax({
         type:'POST',
         contentType: "application/json; charset=utf-8",
@@ -141,7 +140,7 @@ function guardarInformacionCategoria(){
         data: JSON.stringify(var1),
         
         url:"http://132.226.242.207:8081/api/Category/save",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -152,7 +151,7 @@ function guardarInformacionCategoria(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -167,7 +166,7 @@ function editarInformacionCategoria(){
         name:$("#Cname").val(),
         description:$("#Cdescription").val()
         };
-      
+    
         $.ajax({
         type:'PUT',
         contentType: "application/json; charset=utf-8",
@@ -175,7 +174,7 @@ function editarInformacionCategoria(){
         data: JSON.stringify(var1),
         
         url:"http://132.226.242.207:8081/api/Category/update",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -186,7 +185,7 @@ function editarInformacionCategoria(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+             window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -206,7 +205,7 @@ function borrarInformacionCategoria(categoriaId){
         contentType: "application/json; charset=utf-8",
         datatype:"JSON",
         url:"http://132.226.242.207:8081/api/Category/"+categoriaId,
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -217,7 +216,7 @@ function borrarInformacionCategoria(categoriaId){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -265,7 +264,7 @@ function guardarInformacionAudience(){
         capacity:$("#Acapacity").val(),
         description:$("#Adescription").val(),
         };
-      
+    
         $.ajax({
         type:'POST',
         contentType: "application/json; charset=utf-8",
@@ -273,7 +272,7 @@ function guardarInformacionAudience(){
         data: JSON.stringify(var2),
         
         url:"http://132.226.242.207:8081/api/Audience/save",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -284,7 +283,7 @@ function guardarInformacionAudience(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -301,7 +300,7 @@ function editarInformacionAudience(){
         capacity:$("#Acapacity").val(),
         description:$("#Adescription").val(),
         };
-      
+    
         $.ajax({
         type:'PUT',
         contentType: "application/json; charset=utf-8",
@@ -309,7 +308,7 @@ function editarInformacionAudience(){
         data: JSON.stringify(var2),
         
         url:"http://132.226.242.207:8081/api/Audience/update",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -320,7 +319,7 @@ function editarInformacionAudience(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -340,7 +339,7 @@ function borrarInformacionAudience(Aid){
         contentType: "application/json; charset=utf-8",
         datatype:"JSON",
         url:"http://132.226.242.207:8081/api/Audience/"+Aid,
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -351,7 +350,7 @@ function borrarInformacionAudience(Aid){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -399,7 +398,7 @@ function guardarInformacionCliente(){
         name:$("#CLname").val(),
         age:$("#CLage").val(),
         };
-      
+    
         $.ajax({
         type:'POST',
         contentType: "application/json; charset=utf-8",
@@ -407,7 +406,7 @@ function guardarInformacionCliente(){
         data: JSON.stringify(var3),
         
         url:"http://132.226.242.207:8081/api/Client/save",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -418,7 +417,7 @@ function guardarInformacionCliente(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -435,7 +434,7 @@ function editarInformacionCliente(){
         name:$("#CLname").val(),
         age:$("#CLage").val(),
         };
-      
+    
         $.ajax({
         type:'PUT',
         contentType: "application/json; charset=utf-8",
@@ -443,7 +442,7 @@ function editarInformacionCliente(){
         data: JSON.stringify(var3),
         
         url:"http://132.226.242.207:8081/api/Client/update",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -454,7 +453,7 @@ function editarInformacionCliente(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -474,7 +473,7 @@ function borrarInformacionCliente(idClient){
         contentType: "application/json; charset=utf-8",
         datatype:"JSON",
         url:"http://132.226.242.207:8081/api/Client/"+idClient,
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -485,7 +484,7 @@ function borrarInformacionCliente(idClient){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -529,7 +528,7 @@ function guardarInformacionMensaje(){
         idMessage:$("#idMensaje").val(),
         messageText:$("#messagetext").val(),
         };
-      
+    
         $.ajax({
         type:'POST',
         contentType: "application/json; charset=utf-8",
@@ -537,7 +536,7 @@ function guardarInformacionMensaje(){
         data: JSON.stringify(var4),
         
         url:"http://132.226.242.207:8081/api/Message/save",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -548,7 +547,7 @@ function guardarInformacionMensaje(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -562,7 +561,7 @@ function editarInformacionMensaje(){
         idMessage:$("#idMensaje").val(),
         messageText:$("#messagetext").val(),
         };
-      
+    
         $.ajax({
         type:'PUT',
         contentType: "application/json; charset=utf-8",
@@ -570,7 +569,7 @@ function editarInformacionMensaje(){
         data: JSON.stringify(var4),
         
         url:"http://132.226.242.207:8081/api/Message/update",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -581,7 +580,7 @@ function editarInformacionMensaje(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -601,7 +600,7 @@ function borrarInformacionMensaje(idMessage){
         contentType: "application/json; charset=utf-8",
         datatype:"JSON",
         url:"http://132.226.242.207:8081/api/Message/"+idMessage,
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -612,7 +611,7 @@ function borrarInformacionMensaje(idMessage){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -656,7 +655,7 @@ function guardarInformacionReservacion(){
         startDate:$("#startDate").val(),
         devolutionDate:$("#devolutionDate").val(),
         };
-      
+    
         $.ajax({
         type:'POST',
         contentType: "application/json; charset=utf-8",
@@ -664,7 +663,7 @@ function guardarInformacionReservacion(){
         data: JSON.stringify(var5),
         
         url:"http://132.226.242.207:8081/api/Reservation/save",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -675,7 +674,7 @@ function guardarInformacionReservacion(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -690,7 +689,7 @@ function editarInformacionReservacion(){
         startDate:$("#startDate").val(),
         devolutionDate:$("#devolutionDate").val(),
         };
-      
+    
         $.ajax({
         type:'PUT',
         contentType: "application/json; charset=utf-8",
@@ -698,7 +697,7 @@ function editarInformacionReservacion(){
         data: JSON.stringify(var5),
         
         url:"http://132.226.242.207:8081/api/Reservation/update",
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -709,7 +708,7 @@ function editarInformacionReservacion(){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
@@ -729,7 +728,7 @@ function borrarInformacionReservacion(idReservation){
         contentType: "application/json; charset=utf-8",
         datatype:"JSON",
         url:"http://132.226.242.207:8081/api/Reservation/"+idReservation,
-       
+    
         
         success:function(response) {
                 console.log(response);
@@ -740,7 +739,7 @@ function borrarInformacionReservacion(idReservation){
         },
         
         error: function(jqXHR, textStatus, errorThrown) {
-              window.location.reload()
+            window.location.reload()
             alert("No se guardo correctamente");
     
     
